@@ -35,11 +35,16 @@ public class CustomerService {
         return customerRepository.findCustomerByName(name);
     }
 
-    public Customer updateCustomer(Customer newCustomer){
+    public Customer updateCustomer(Customer newCustomer, String email){
         Customer existCustomer=customerRepository.findCustomerById(newCustomer.getCustomerId());
         if(existCustomer != null){
             if(!existCustomer.getCustomerName().equals(newCustomer.getCustomerName())){
                 existCustomer.setCustomerName(newCustomer.getCustomerName());
+                //existCustomer.setEmail(newCustomer.getEmail());
+            }
+            String currentEmail=existCustomer.getEmail();
+            if(currentEmail !=null && !existCustomer.getEmail().equals(currentEmail)){
+                existCustomer.setEmail(email);
             }
         }
         return customerRepository.save(existCustomer);

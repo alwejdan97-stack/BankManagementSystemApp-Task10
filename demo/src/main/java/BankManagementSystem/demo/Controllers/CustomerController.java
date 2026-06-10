@@ -34,8 +34,8 @@ public class CustomerController {
     }
 
     @PutMapping("updateCustomer")
-    public Customer updateCustomer(@RequestBody Customer newCustomer){
-        return customerService.updateCustomer(newCustomer);
+    public Customer updateCustomer(@RequestBody Customer newCustomer, @RequestParam String email){
+        return customerService.updateCustomer(newCustomer,email);
     }
 
     @DeleteMapping("deleteCustomer")
