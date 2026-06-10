@@ -27,4 +27,9 @@ public class CustomerController {
     public Customer findCustomerById(@PathVariable Integer id){
         return customerService.findCustomerById(id);
     }
+
+    @GetMapping("findCustomerByName")
+    public Customer findCustomerByName(@PathVariable String name){
+        return customerService.findCustomerbyName(name);
+    }
 }
