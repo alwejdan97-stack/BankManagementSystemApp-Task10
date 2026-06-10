@@ -5,6 +5,8 @@ import BankManagementSystem.demo.Repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CustomerService {
     @Autowired
@@ -18,5 +20,9 @@ public class CustomerService {
         customerToAdd.setEmail(newCustomer.getEmail());
         customerToAdd.setAccountNumber(newCustomer.getAccountNumber());
         return customerRepository.save(customerToAdd);
+    }
+
+    public List<Customer> getAllCustomers(){
+        return customerRepository.getAllCustomers();
     }
 }
