@@ -37,4 +37,9 @@ public class CustomerController {
     public Customer updateCustomer(@RequestBody Customer newCustomer){
         return customerService.updateCustomer(newCustomer);
     }
+
+    @DeleteMapping("deleteCustomer")
+    public Boolean deleteCustomer(@PathVariable Integer id){
+        return customerService.deleteCustomer(id);
+    }
 }

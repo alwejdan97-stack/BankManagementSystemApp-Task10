@@ -44,4 +44,14 @@ public class CustomerService {
         }
         return customerRepository.save(existCustomer);
     }
+
+    public Boolean deleteCustomer(Integer id){
+        Customer customer=customerRepository.findCustomerById(id);
+        if(customer != null){
+            customerRepository.save(customer);
+            return true;
+        }
+        return false;
+    }
+
 }
