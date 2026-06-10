@@ -1,10 +1,22 @@
 package BankManagementSystem.demo.Entities;
 
+import jakarta.persistence.*;
+import lombok.*;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Setter
+@Getter
+@Entity
+@Table(name = "Customer")
 public class Customer {
-    private int customerId;
-    private String customerName;
-    private int accountNumber;
-    private double balance;
-    private String email;
-    private String phoneNumber;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    int customerId;
+    String customerName;
+    int accountNumber;
+    double balance;
+    String email;
+    String phoneNumber;
 }
