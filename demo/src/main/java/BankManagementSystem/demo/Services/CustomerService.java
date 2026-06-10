@@ -11,6 +11,12 @@ public class CustomerService {
     CustomerRepository customerRepository;
 
     public Customer addCustomer(Customer newCustomer){
-
+        Customer customerToAdd=new Customer();
+        customerToAdd.setCustomerId(newCustomer.getCustomerId());
+        customerToAdd.setCustomerName(newCustomer.getCustomerName());
+        customerToAdd.setPhoneNumber(newCustomer.getPhoneNumber());
+        customerToAdd.setEmail(newCustomer.getEmail());
+        customerToAdd.setAccountNumber(newCustomer.getAccountNumber());
+        return customerRepository.save(customerToAdd);
     }
 }
