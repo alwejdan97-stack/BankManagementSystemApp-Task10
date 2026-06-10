@@ -3,10 +3,9 @@ package BankManagementSystem.demo.Controllers;
 import BankManagementSystem.demo.Entities.Customer;
 import BankManagementSystem.demo.Services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("customer")
@@ -17,5 +16,10 @@ public class CustomerController {
     @PostMapping("addCustomer")
     public Customer addCustomer(@RequestBody Customer newCustomer){
         return customerService.addCustomer(newCustomer);
+    }
+
+    @GetMapping("getAllCustomers")
+    public List<Customer> getAllCustomers(){
+        return customerService.getAllCustomers();
     }
 }
