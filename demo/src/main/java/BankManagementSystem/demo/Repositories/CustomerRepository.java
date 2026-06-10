@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer,Integer> {
-    @Query("SELECT C FROM Customer C WHERE C.customerName=NOTNULL")
+    //@Query("SELECT C FROM Customer C WHERE C.customerName=NOTNULL")
     List<Customer> getAllCustomers();
 }
