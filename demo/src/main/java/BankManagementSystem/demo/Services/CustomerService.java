@@ -27,6 +27,6 @@ public class CustomerService {
     }
 
     public Customer findCustomerById(Integer id){
-        return customerRepository;
+        return customerRepository.findCustomerById(id);
     }
 }
