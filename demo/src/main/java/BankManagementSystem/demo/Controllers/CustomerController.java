@@ -23,22 +23,22 @@ public class CustomerController {
         return customerService.getAllCustomers();
     }
 
-    @GetMapping("findCustomerById")
+    @GetMapping("findCustomerById/{id}")
     public Customer findCustomerById(@PathVariable Integer id){
         return customerService.findCustomerById(id);
     }
 
-    @GetMapping("findCustomerByName")
+    @GetMapping("findCustomerByName/{name}")
     public Customer findCustomerByName(@PathVariable String name){
         return customerService.findCustomerByName(name);
     }
 
     @PutMapping("updateCustomer")
-    public Customer updateCustomer(@RequestBody Customer newCustomer, @RequestParam String email){
-        return customerService.updateCustomer(newCustomer,email);
+    public Customer updateCustomer(@RequestBody Customer newCustomer, Integer id) throws Exception{
+        return customerService.updateCustomer(newCustomer,id);
     }
 
-    @DeleteMapping("deleteCustomer")
+    @DeleteMapping("deleteCustomer/{id}")
     public Boolean deleteCustomer(@PathVariable Integer id){
         return customerService.deleteCustomer(id);
     }

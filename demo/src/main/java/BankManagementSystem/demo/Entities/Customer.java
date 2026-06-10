@@ -9,7 +9,7 @@ import lombok.*;
 @Setter
 @Getter
 @Entity
-@Table(name = "Customer")
+@Table(name ="Customer")
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

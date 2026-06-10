@@ -3,7 +3,6 @@ package BankManagementSystem.demo.Services;
 import BankManagementSystem.demo.Entities.Customer;
 import BankManagementSystem.demo.Repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,13 +13,7 @@ public class CustomerService {
     CustomerRepository customerRepository;
 
     public Customer addCustomer(Customer newCustomer){
-        Customer customerToAdd=new Customer();
-        customerToAdd.setCustomerId(newCustomer.getCustomerId());
-        customerToAdd.setCustomerName(newCustomer.getCustomerName());
-        customerToAdd.setPhoneNumber(newCustomer.getPhoneNumber());
-        customerToAdd.setEmail(newCustomer.getEmail());
-        customerToAdd.setAccountNumber(newCustomer.getAccountNumber());
-        return customerRepository.save(customerToAdd);
+        return customerRepository.save(newCustomer);
     }
 
     public List<Customer> getAllCustomers(){
@@ -35,25 +28,25 @@ public class CustomerService {
         return customerRepository.findCustomerByName(name);
     }
 
-    public Customer updateCustomer(Customer newCustomer, String email){
+    public Customer updateCustomer(Customer newCustomer)throws Exception{
         Customer existCustomer=customerRepository.findCustomerById(newCustomer.getCustomerId());
         if(existCustomer != null){
             if(!existCustomer.getCustomerName().equals(newCustomer.getCustomerName())){
                 existCustomer.setCustomerName(newCustomer.getCustomerName());
-                //existCustomer.setEmail(newCustomer.getEmail());
+                existCustomer.setPhoneNumber(newCustomer.getPhoneNumber());
+                existCustomer.setEmail(newCustomer.getEmail());
+                existCustomer.setAccountNumber(newCustomer.getAccountNumber());
+                existCustomer.setBalance(newCustomer.getBalance());
             }
-            String currentEmail=existCustomer.getEmail();
-            if(currentEmail !=null && !existCustomer.getEmail().equals(currentEmail)){
-                existCustomer.setEmail(email);
-            }
+            return customerRepository.save(existCustomer);
         }
-        return customerRepository.save(existCustomer);
+        throw new Exception("Invalid Data...");
     }
 
     public Boolean deleteCustomer(Integer id){
         Customer customer=customerRepository.findCustomerById(id);
         if(customer != null){
-            customerRepository.save(customer);
+            customerRepository.delete(customer);
             return true;
         }
         return false;
