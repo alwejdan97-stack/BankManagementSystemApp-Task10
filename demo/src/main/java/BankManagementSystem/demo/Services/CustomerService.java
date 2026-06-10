@@ -30,7 +30,7 @@ public class CustomerService {
         return customerRepository.findCustomerById(id);
     }
 
-    public Customer findCustomerbyName(String name){
-        return customerRepository.findCustomerbyName(name);
+    public Customer findCustomerByName(String name){
+        return customerRepository.findCustomerByName(name);
     }
 }

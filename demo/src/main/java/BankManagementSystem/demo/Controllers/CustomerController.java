@@ -30,6 +30,6 @@ public class CustomerController {
 
     @GetMapping("findCustomerByName")
     public Customer findCustomerByName(@PathVariable String name){
-        return customerService.findCustomerbyName(name);
+        return customerService.findCustomerByName(name);
     }
 }
