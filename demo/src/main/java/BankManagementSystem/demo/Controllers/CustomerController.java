@@ -32,4 +32,9 @@ public class CustomerController {
     public Customer findCustomerByName(@PathVariable String name){
         return customerService.findCustomerByName(name);
     }
+
+    @PutMapping("updateCustomer")
+    public Customer updateCustomer(@RequestBody Customer newCustomer){
+        return customerService.updateCustomer(newCustomer);
+    }
 }

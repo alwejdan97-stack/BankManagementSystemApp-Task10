@@ -3,6 +3,7 @@ package BankManagementSystem.demo.Services;
 import BankManagementSystem.demo.Entities.Customer;
 import BankManagementSystem.demo.Repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -32,5 +33,15 @@ public class CustomerService {
 
     public Customer findCustomerByName(String name){
         return customerRepository.findCustomerByName(name);
+    }
+
+    public Customer updateCustomer(Customer newCustomer){
+        Customer existCustomer=customerRepository.findCustomerById(newCustomer.getCustomerId());
+        if(existCustomer != null){
+            if(!existCustomer.getCustomerName().equals(newCustomer.getCustomerName())){
+                existCustomer.setCustomerName(newCustomer.getCustomerName());
+            }
+        }
+        return customerRepository.save(existCustomer);
     }
 }
