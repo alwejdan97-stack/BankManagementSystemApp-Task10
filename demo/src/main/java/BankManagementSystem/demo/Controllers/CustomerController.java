@@ -22,4 +22,9 @@ public class CustomerController {
     public List<Customer> getAllCustomers(){
         return customerService.getAllCustomers();
     }
+
+    @GetMapping("findCustomerById")
+    public Customer findCustomerById(@PathVariable Integer id){
+        return customerService.findCustomerById(id);
+    }
 }
