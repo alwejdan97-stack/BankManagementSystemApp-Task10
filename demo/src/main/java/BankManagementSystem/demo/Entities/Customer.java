@@ -4,10 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Data
-@AllArgsConstructor
+//@AllArgsConstructor
 @NoArgsConstructor
-@Setter
-@Getter
 @Entity
 @Table(name ="Customer")
 public class Customer {

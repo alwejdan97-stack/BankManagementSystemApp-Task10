@@ -8,37 +8,37 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("customer")
+@RequestMapping("/customer")
 public class CustomerController {
     @Autowired
     CustomerService customerService;
 
-    @PostMapping("addCustomer")
+    @PostMapping("/addCustomer")
     public Customer addCustomer(@RequestBody Customer newCustomer){
         return customerService.addCustomer(newCustomer);
     }
 
-    @GetMapping("getAllCustomers")
+    @GetMapping("/getAllCustomers")
     public List<Customer> getAllCustomers(){
         return customerService.getAllCustomers();
     }
 
-    @GetMapping("findCustomerById/{id}")
+    @GetMapping("/findCustomerById/{id}")
     public Customer findCustomerById(@PathVariable Integer id){
         return customerService.findCustomerById(id);
     }
 
-    @GetMapping("findCustomerByName/{name}")
+    @GetMapping("/findCustomerByName/{name}")
     public Customer findCustomerByName(@PathVariable String name){
         return customerService.findCustomerByName(name);
     }
 
-    @PutMapping("updateCustomer")
-    public Customer updateCustomer(@RequestBody Customer newCustomer, Integer id) throws Exception{
-        return customerService.updateCustomer(newCustomer,id);
+    @PutMapping("/updateCustomer")
+    public Customer updateCustomer(@RequestBody Customer newCustomer) throws Exception{
+        return customerService.updateCustomer(newCustomer);
     }
 
-    @DeleteMapping("deleteCustomer/{id}")
+    @DeleteMapping("/deleteCustomer/{id}")
     public Boolean deleteCustomer(@PathVariable Integer id){
         return customerService.deleteCustomer(id);
     }
