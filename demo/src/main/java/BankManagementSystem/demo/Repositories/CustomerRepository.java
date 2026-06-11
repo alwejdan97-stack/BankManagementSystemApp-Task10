@@ -14,7 +14,7 @@ public interface CustomerRepository extends JpaRepository<Customer,Integer> {
     List<Customer> getAllCustomers();
 
     @Query("SELECT C FROM Customer C WHERE C.customerId=:customerId")
-    Customer findCustomerById(@Param("customerId") Integer id);
+    Customer findCustomerById(@Param("customerId") Integer customerId);
 
     @Query("SELECT C FROM Customer C WHERE C.customerName=:customerName")
     Customer findCustomerByName(@Param("customerName") String name);
