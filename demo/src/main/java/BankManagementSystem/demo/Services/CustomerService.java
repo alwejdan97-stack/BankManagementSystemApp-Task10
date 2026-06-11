@@ -32,7 +32,6 @@ public class CustomerService {
         Customer existCustomer = customerRepository.findCustomerById(customerId);
 
         if (existCustomer != null) {
-
             existCustomer.setCustomerName(newCustomer.getCustomerName());
             existCustomer.setPhoneNumber(newCustomer.getPhoneNumber());
             existCustomer.setEmail(newCustomer.getEmail());
@@ -51,5 +50,4 @@ public class CustomerService {
         }
         return false;
     }
-
 }
