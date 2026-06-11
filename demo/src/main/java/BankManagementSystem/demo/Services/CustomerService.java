@@ -28,8 +28,8 @@ public class CustomerService {
         return customerRepository.findCustomerByName(name);
     }
 
-    public Customer updateCustomer(Customer newCustomer)throws Exception{
-        Customer existCustomer=customerRepository.findCustomerById(newCustomer.getCustomerId());
+    public Customer updateCustomer(Customer newCustomer, Integer customerId)throws Exception{
+        Customer existCustomer=customerRepository.findCustomerById(customerId);
         if(existCustomer != null){
             if(!existCustomer.getCustomerName().equals(newCustomer.getCustomerName())){
                 existCustomer.setCustomerName(newCustomer.getCustomerName());

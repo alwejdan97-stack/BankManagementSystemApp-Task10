@@ -33,9 +33,9 @@ public class CustomerController {
         return customerService.findCustomerByName(name);
     }
 
-    @PutMapping("/updateCustomer")
-    public Customer updateCustomer(@RequestBody Customer newCustomer) throws Exception{
-        return customerService.updateCustomer(newCustomer);
+    @PutMapping("/updateCustomer/{id}")
+    public Customer updateCustomer(@RequestBody Customer newCustomer,@PathVariable Integer id) throws Exception{
+        return customerService.updateCustomer(newCustomer,id);
     }
 
     @DeleteMapping("/deleteCustomer/{id}")
